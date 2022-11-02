@@ -7,10 +7,12 @@ import models.Client;
 import models.ResponseError;
 import org.junit.Assert;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class ClientStepDefinition {
 
@@ -40,7 +42,7 @@ public class ClientStepDefinition {
 
     @And("the client gender is {string}")
     public void theClientGenderIsFemale(String gender) {
-        client.setSexo(gender == "female" ? "F" : "M");
+        client.setSexo(gender);
     }
 
     @And("the client city is {string}")
@@ -53,15 +55,20 @@ public class ClientStepDefinition {
         client.setRua(street);
     }
 
-    @And("the client zipCode is {int}")
-    public void theClientZipCodeIs(Integer zipCode) {
-        client.setCep(zipCode);
+    @And("the client zipCode is {string}")
+    public void theClientZipCodeIs(String zipCode) {
+        if(Objects.nonNull(zipCode) && !zipCode.isEmpty()){
+            client.setCep(Integer.parseInt(zipCode));
+        }
     }
 
     @And("the client birthdate is {string}")
     public void theClientBirthdateIs(String birthDate) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        client.setDataNascimento(sdf.parse(birthDate));
+        if(Objects.nonNull(birthDate) && !birthDate.isEmpty()){
+            SimpleDateFormat sdfEn = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdfPt = new SimpleDateFormat("dd/MM/yyyy");
+            client.setDataNascimento(sdfEn.format(sdfPt.parse(birthDate)));
+        }
     }
 
     @When("the request is made to Client Service")
@@ -79,16 +86,22 @@ public class ClientStepDefinition {
                 .body(execute.getBody());
     }
 
-    @Then("the status code must be {int}")
-    public void theStatusCodeMustBe(int statusCode) {
-        Response response = responseBuilder.build();
-        Assert.assertEquals(statusCode, response.getStatus().value());
-    }
-
     @And("the error message must be {string}")
     public void theErrorMessageMustBe(String errorMessage) {
         Response response = responseBuilder.build();
         ResponseError responseError = (ResponseError) response.getBody();
         Assert.assertEquals(errorMessage, responseError.getMessage());
+    }
+
+    @Then("the client must be registered successfully")
+    public void theClientMustBeRegisteredSuccessfully() {
+        Response response = responseBuilder.build();
+        Assert.assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus().value());
+    }
+
+    @Then("the client must not be registered")
+    public void theClientMustNotBeRegistered() {
+        Response response = responseBuilder.build();
+        Assert.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(), response.getStatus().value());
     }
 }

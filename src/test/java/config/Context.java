@@ -10,9 +10,6 @@ public class Context {
 
     private static Context instance;
 
-    //private RequestBuilder request = new RequestBuilder();
-    //private ResponseBuilder response = new ResponseBuilder();
-
     public static Context getInstance(){
         if(instance == null){
             instance = new Context();
