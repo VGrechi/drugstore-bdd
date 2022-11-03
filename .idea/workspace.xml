@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="746f9936-8d7d-4845-bb2d-3770e1943bb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ClientStepDefinition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CucumberRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HttpClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/config/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/config/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/config/RequestBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/config/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/config/ResponseBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/ResponseError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/utils/JsonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/client.feature" afterDir="false" />
+    <list default="true" id="746f9936-8d7d-4845-bb2d-3770e1943bb7" name="Changes" comment="Client registration feature complete">
+      <change afterPath="$PROJECT_DIR$/src/test/java/config/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/Pharmaceutical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/steps/EmployeeStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/employee.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ClientStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/ClientStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CucumberRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CucumberRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/HttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/config/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/config/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/client.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/client.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,19 +48,24 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victor/Documents/Projetos/Pessoais/drugstore-bdd/src/test/resources&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Victor\Documents\Projetos\Pessoais\drugstore-bdd\src\test\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="models" />
+      <recent name="" />
       <recent name="config" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CucumberRunner">
+  <component name="RunManager" selected="Cucumber Java.Scenario: should not register client successfully">
     <configuration name="Feature: client" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/client.feature" />
@@ -116,9 +114,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: should not register client successfully" />
         <item itemvalue="JUnit.CucumberRunner" />
         <item itemvalue="Cucumber Java.Feature: client" />
-        <item itemvalue="Cucumber Java.Scenario: should not register client successfully" />
       </list>
     </recent_temporary>
   </component>
@@ -131,6 +129,21 @@
       <option name="presentableId" value="Default" />
       <updated>1666891173804</updated>
     </task>
+    <task id="LOCAL-00001" summary="Client registration scenarios">
+      <created>1667246593834</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667246593834</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Client registration feature complete">
+      <created>1667402438065</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667402438065</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,23 +157,18 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Client registration scenarios" />
+    <MESSAGE value="Client registration feature complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client registration feature complete" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/config/Context.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ClientStepDefinition.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ClientStepDefinition.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/test/java/utils/JsonUtils.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

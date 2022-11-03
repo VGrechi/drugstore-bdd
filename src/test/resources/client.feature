@@ -2,9 +2,9 @@ Feature: Client registration
 
   Background:
   As a employee
-  I want to register a client
+  I want to register a new client
 
-  Scenario: should register client successfully
+  Scenario: should register a client successfully
     Given I want to register a new client
     And the client name is "Olga"
     And the client gender is "female"
@@ -15,7 +15,7 @@ Feature: Client registration
     When the request is made to Client Service
     Then the client must be registered successfully
 
-  Scenario Outline: should not register client successfully
+  Scenario Outline: should not register a client successfully
     Given I want to register a new client
     And the client name is "<name>"
     And the client gender is "<gender>"

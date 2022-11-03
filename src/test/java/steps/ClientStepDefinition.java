@@ -1,3 +1,5 @@
+package steps;
+
 import config.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,6 +11,7 @@ import org.junit.Assert;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import utils.HttpClient;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,7 +76,7 @@ public class ClientStepDefinition {
 
     @When("the request is made to Client Service")
     public void madeRequest() throws Exception {
-        requestBuilder.url("http://localhost:8080/clients/");
+        requestBuilder.url(Constants.CLIENT_SERVICE);
         requestBuilder.body(client);
 
         Request request = requestBuilder.build();

@@ -1,3 +1,5 @@
+package utils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import config.Request;
 import models.ResponseError;
