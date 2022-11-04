@@ -99,12 +99,19 @@ public class ClientStepDefinition {
     @Then("the client must be registered successfully")
     public void theClientMustBeRegisteredSuccessfully() {
         Response response = responseBuilder.build();
-        Assert.assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus().value());
+        Assert.assertEquals(HttpStatus.CREATED.value(), response.getStatus().value());
     }
 
     @Then("the client must not be registered")
     public void theClientMustNotBeRegistered() {
         Response response = responseBuilder.build();
         Assert.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(), response.getStatus().value());
+    }
+
+    @And("I save the client's ID number")
+    public void iSaveTheClientSIDNumber() {
+        Response response = responseBuilder.build();
+        Client responseBody = (Client) response.getBody();
+        Context.getInstance().setClientId(Objects.nonNull(responseBody) ? responseBody.getIdCliente() : 1);
     }
 }

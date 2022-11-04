@@ -7,7 +7,7 @@ Feature: Client registration
   Scenario: should register a client successfully
     Given I want to register a new client
     And the client name is "Olga"
-    And the client gender is "female"
+    And the client gender is "F"
     And the client city is "São Carlos"
     And the client street is "Carlos Botelho"
     And the client zipCode is "13561003"

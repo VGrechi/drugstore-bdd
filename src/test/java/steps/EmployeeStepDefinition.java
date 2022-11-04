@@ -5,10 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import models.Client;
 import models.Employee;
-import models.Pharmaceutical;
-import models.ResponseError;
 import org.junit.Assert;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -25,11 +22,6 @@ public class EmployeeStepDefinition {
     private Employee employee;
     private RequestBuilder requestBuilder;
     private ResponseBuilder responseBuilder;
-
-    @Given("ok")
-    public void ok(){
-        Assert.assertTrue(true);
-    }
 
     @Given("I want to register a new employee")
     public void iWantToRegisterANewEmployee() {
@@ -88,14 +80,12 @@ public class EmployeeStepDefinition {
 
     @And("the employee function is {string}")
     public void theEmployeeFunctionIs(String function) {
-        if(function.equals("pharmaceutical")){
-            employee = employee.becomePharmaceutical();
-        }
+        employee.setFuncao(function);
     }
 
     @And("the employee CRF is {int}")
     public void theEmployeeCRFIs(int crf) {
-        ((Pharmaceutical) employee).setCrf(crf);
+        employee.setCrf(crf);
     }
 
     @When("the request is made to Employee Service")
@@ -113,17 +103,10 @@ public class EmployeeStepDefinition {
                 .body(execute.getBody());
     }
 
-    @And("the error message must be {string}")
-    public void theErrorMessageMustBe(String errorMessage) {
-        Response response = responseBuilder.build();
-        ResponseError responseError = (ResponseError) response.getBody();
-        Assert.assertEquals(errorMessage, responseError.getMessage());
-    }
-
     @Then("the employee must be registered successfully")
     public void theEmployeeMustBeRegisteredSuccessfully() {
         Response response = responseBuilder.build();
-        Assert.assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus().value());
+        Assert.assertEquals(HttpStatus.CREATED.value(), response.getStatus().value());
     }
 
     @Then("the employee must not be registered")
@@ -132,6 +115,10 @@ public class EmployeeStepDefinition {
         Assert.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(), response.getStatus().value());
     }
 
-
-
+    @And("I save the employee inss number")
+    public void iSaveTheEmployeeInssNumber() {
+        Response response = responseBuilder.build();
+        Employee responseBody = (Employee) response.getBody();
+        Context.getInstance().setEmployeeInss(Objects.nonNull(responseBody) ? responseBody.getInss() : 1);
+    }
 }

@@ -15,8 +15,6 @@ public class Employee {
     protected String dataNascimento;
     protected String dataContratacao;
     protected String funcao;
+    private Integer crf;
 
-    public Pharmaceutical becomePharmaceutical() {
-        return new Pharmaceutical(this);
-    }
 }

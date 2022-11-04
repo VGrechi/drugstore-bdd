@@ -1,4 +1,4 @@
-Feature: Client registration
+Feature: Employee registration
 
   Background:
   As a system admin
